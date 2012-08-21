@@ -24,10 +24,11 @@ URL_LOGIN_POST = 'http://www.cnepub.com/discuz/logging.php?action=login' \
     '&loginsubmit=yes&floatlogin=yes'
 URL_TASKS_APPLY = 'http://www.cnepub.com/discuz/task.php?action=apply&id=%d'
 URL_TASKS_DRAW = 'http://www.cnepub.com/discuz/task.php?action=draw&id=%d'
-URL_TASKS_IDS = [34, 42, ]
 
 FORMHASH_PATTERN = \
     re.compile(r'<input type="hidden" name="formhash" value="(\w+)" />')
+
+TASKS_IDS = [34, 42, ]
 
 def main():
     """Main Process"""
@@ -47,7 +48,7 @@ def main():
     body = session.get(URL_INDEX).body
 
     # tasks
-    for task_id in URL_TASKS_IDS:
+    for task_id in TASKS_IDS:
         url = URL_TASKS_APPLY % task_id
         response = session.post(url)
         url = URL_TASKS_DRAW % task_id
