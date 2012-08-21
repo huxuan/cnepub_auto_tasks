@@ -6,6 +6,10 @@ Auto Tasks in cnepub or 掌中书苑 in Chinese
 
 urlfetch (https://github.com/lyxint/urlfetch/)
 
+``
+sudo pip install urlfetch
+``
+
 ## Usage
 
 ``
