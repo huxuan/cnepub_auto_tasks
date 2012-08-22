@@ -80,7 +80,7 @@ def main():
         response = session.post(url)
         if MSG_ALREADY in response.body.decode('gbk'):
             print >>f, LOG_ALREADY % (task_id, username)
-        if MSG_CANNOT in response.body.decode('gbk'):
+        elif MSG_CANNOT in response.body.decode('gbk'):
             print >>f, LOG_CANNOT % (task_id, username)
         else:
             # draw tasks
