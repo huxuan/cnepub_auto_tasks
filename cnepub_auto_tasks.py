@@ -29,9 +29,11 @@ URL_TASKS_DRAW = 'http://www.cnepub.com/discuz/task.php?action=draw&id=%d'
 ERR_USERNAME_PASSWORD = '[Error] Please input username & password!'
 
 MSG_ALREADY = u'本期您已经申请过此任务，请下期再来申请吧！'
+MSG_CANNOT = u'您所在的用户组不允许申请此任务！'
 MSG_SUCCESS = u'恭喜您，任务已成功完成，您将收到奖励通知短消息，请注意查收！'
 
 LOG_ALREADY = '[Already] Task %d for %s!'
+LOG_CANNOT = '[Cannot] Task %d for %s!'
 LOG_SUCCESS = '[Success] Task %d  for %s!'
 LOG_FAIL = '[Fail] Task %d for %s!'
 
@@ -77,6 +79,8 @@ def main():
         response = session.post(url)
         if MSG_ALREADY in response.body.decode('gbk'):
             print >>f, LOG_ALREADY % (task_id, username)
+        if MSG_CANNOT in response.body.decode('gbk'):
+            print >>f, LOG_CANNOT % (task_id, username)
         else:
             # draw tasks
             url = URL_TASKS_DRAW % task_id
