@@ -13,6 +13,7 @@ Copyrgiht (c) 2012 by huxuan. All rights reserved.
 License GPLv3
 """
 
+import os
 import re
 import sys
 import datetime
